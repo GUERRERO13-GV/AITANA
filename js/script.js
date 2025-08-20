@@ -77,20 +77,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(styleSheet);
 
 
-    // --- Floating Hearts Animation for Hero Banner ---
-    const particlesContainer = document.getElementById('particles-js');
-    if (particlesContainer) {
-        const particleCount = 30; // Fewer particles for a more subtle effect
-        for (let i = 0; i < particleCount; i++) {
-            let particle = document.createElement('div');
-            particle.classList.add('particle');
-            particle.innerHTML = '❤️'; // Use heart emoji
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.top = `${Math.random() * 100}%`;
-            particle.style.fontSize = `${Math.random() * 1.5 + 0.5}rem`; // Vary size
-            particle.style.animationDuration = `${Math.random() * 8 + 7}s`; // Slower, more romantic
-            particle.style.animationDelay = `${Math.random() * 7}s`;
-            particlesContainer.appendChild(particle);
-        }
-    }
+    // Particle animation removed as per new design.
 });
