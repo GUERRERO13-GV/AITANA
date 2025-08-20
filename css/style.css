@@ -1,0 +1,508 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #f8c5d8; /* Light Pink */
+    --secondary-color: #d8b4e2; /* Lilac */
+    --background-color: #fffaf7; /* Off-white/Beige */
+    --text-color: #5c5470; /* Dark Muted Purple */
+    --header-color: #ffffff;
+    --accent-color: #ff7e9f; /* Brighter Pink for accents */
+
+    --font-heading: 'Dancing Script', cursive;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-heading);
+    color: var(--accent-color);
+}
+
+h2 i {
+    margin-right: 10px;
+}
+
+p.intro-text {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    font-size: 1.1rem;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: var(--header-color);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
+}
+
+.nav-brand {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+/* --- Section 1: Hero Banner --- */
+.hero-banner {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden; /* For particle animation */
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+}
+
+.hero-content {
+    z-index: 2;
+    background: rgba(0,0,0,0.1);
+    padding: 2rem 3rem;
+    border-radius: 15px;
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 6rem;
+    margin: 0;
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--accent-color), 0 0 40px var(--accent-color);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--accent-color);
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px var(--accent-color), 0 0 40px var(--accent-color);
+    }
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin: 1rem 0 2rem 0;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #fff;
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* Add margin to main to avoid content hiding behind fixed header */
+main {
+    padding-top: 70px; /* Adjust based on header height */
+}
+
+/* --- Section 2: Timeline --- */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: var(--primary-color);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 4rem;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 4rem;
+    text-align: left;
+}
+
+.timeline-content {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    position: relative;
+}
+
+.timeline-item::after {
+    content: '💕';
+    position: absolute;
+    top: 20px;
+    right: -15px;
+    font-size: 1.5rem;
+    background: var(--background-color);
+    border-radius: 50%;
+    padding: 5px;
+    z-index: 10;
+}
+
+.timeline-item:nth-child(odd)::after {
+    right: -25px; /* Adjust position for odd items */
+}
+
+.timeline-item:nth-child(even)::after {
+    left: -25px; /* Adjust position for even items */
+}
+
+
+/* --- Section 3: Gallery --- */
+.gallery-albums {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.album h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* --- Section 4: Love Letters --- */
+.letter-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.letter {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    max-width: 400px;
+    border-top: 5px solid var(--primary-color);
+}
+
+.letter p {
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.letter .signature {
+    display: block;
+    text-align: right;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+
+/* --- Section 5: Important Dates --- */
+.dates-list {
+    list-style: none;
+    padding: 0;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.dates-list li {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+.dates-list i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-right: 1.5rem;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+footer .fa-heart {
+    color: var(--accent-color);
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* --- Lightbox --- */
+.lightbox-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-lightbox:hover,
+.close-lightbox:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    /* --- General --- */
+    h2 {
+        font-size: 2rem;
+    }
+    .container {
+        padding: 3rem 1rem;
+    }
+
+    /* --- Navigation --- */
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    nav ul {
+        margin-top: 1rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    main {
+        padding-top: 120px; /* Adjust for taller mobile nav */
+    }
+
+    /* --- Hero --- */
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .hero-content {
+        padding: 1.5rem;
+        width: 90%;
+    }
+
+    /* --- Timeline --- */
+    .timeline::before {
+        left: 30px;
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 5rem;
+        padding-right: 1rem;
+    }
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        left: 0;
+        text-align: left;
+    }
+    .timeline-item:nth-child(odd)::after,
+    .timeline-item:nth-child(even)::after {
+        left: 15px;
+    }
+
+    /* --- Letters --- */
+    .letter-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    /* --- Hero --- */
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    nav ul {
+        gap: 0.8rem;
+    }
+    nav a {
+        font-size: 0.9rem;
+    }
+    .nav-brand {
+        font-size: 1.5rem;
+    }
+    main {
+        padding-top: 110px;
+    }
+
+    /* --- Photo Grid --- */
+    .photo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+/* --- Particle Animation --- */
+.particle {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float 10s infinite linear;
+    font-size: 1rem; /* Base size for hearts */
+}
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    25% {
+         opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-15vh) translateX(2vw);
+    }
+    75% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-30vh) translateX(-2vw);
+        opacity: 0;
+    }
+}
