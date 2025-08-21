@@ -286,7 +286,21 @@ main {
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-/* --- Section 4: Love Letters --- */
+/* --- Section 4: Video Grid --- */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.video-grid video {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* --- Section 5: Love Letters --- */
 .letter-container {
     display: flex;
     justify-content: center;
@@ -317,7 +331,7 @@ main {
 }
 
 
-/* --- Section 5: Important Dates --- */
+/* --- Section 6: Important Dates --- */
 .dates-list {
     list-style: none;
     padding: 0;
@@ -465,6 +479,11 @@ footer .fa-heart {
     .letter-container {
         flex-direction: column;
         align-items: center;
+    }
+
+    /* --- Video Grid --- */
+    .video-grid {
+        grid-template-columns: 1fr;
     }
 }
 
