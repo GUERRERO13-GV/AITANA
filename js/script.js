@@ -1,81 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Smooth Scroll for the discover button ---
-    const discoverButton = document.querySelector('.btn');
-    if (discoverButton) {
-        discoverButton.addEventListener('click', (e) => {
+    // --- Smooth Scroll for navigation links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector('#historia').scrollIntoView({
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'
             });
         });
-    }
-
-    // --- Lightbox Functionality ---
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const galleryImages = document.querySelectorAll('.gallery-img');
-    const closeBtn = document.querySelector('.close-lightbox');
-
-    galleryImages.forEach(img => {
-        img.addEventListener('click', () => {
-            lightbox.style.display = 'block';
-            lightboxImg.src = img.src;
-        });
     });
 
-    if(closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-        });
-    }
+    // --- Carousel Logic ---
+    const slides = document.querySelector('.carousel-slides');
+    if (slides) {
+        const slideElements = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
 
-    // Close lightbox when clicking outside the image
-    if(lightbox) {
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.style.display = 'none';
-            }
-        });
-    }
+        let currentIndex = 0;
+        const totalSlides = slideElements.length;
 
-
-    // --- Animate timeline on scroll ---
-    const timelineItems = document.querySelectorAll('.timeline-item');
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animation = `fadeInUp 1s ease-out forwards`;
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    timelineItems.forEach(item => {
-        item.style.opacity = '0'; // Hide them initially
-        observer.observe(item);
-    });
-
-    // Add CSS for the animation dynamically
-    const styleSheet = document.createElement("style");
-    styleSheet.type = "text/css";
-    styleSheet.innerText = `
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        function updateCarousel() {
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
-    `;
-    document.head.appendChild(styleSheet);
 
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        });
 
-    // Particle animation removed as per new design.
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        });
+
+        // Optional: Auto-play functionality
+        setInterval(() => {
+            nextBtn.click();
+        }, 5000); // Change slide every 5 seconds
+    }
 });
